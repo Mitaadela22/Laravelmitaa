@@ -80,7 +80,7 @@
 							<option value="admin" {{ $val=="admin"?'selected':'' }}>Administrator</option>
 						</select>
 						@if($errors->has('akses'))
-						<div class="inva lid-feedback">{{ $erorrs->first('akses') }}</div>
+						<div class="invalid-feedback">{{ $errors->first('akses') }}</div>
 						@endif
 					</div><!-- End Form Group-->
 
