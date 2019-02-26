@@ -17,7 +17,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{route('admin.kategori')}}">
           <i class="fas fa-fw fa-list"></i>
-       <span>UKategori</span>
+       <span>Kategori</span>
       </a>
     </li>
     @endif
