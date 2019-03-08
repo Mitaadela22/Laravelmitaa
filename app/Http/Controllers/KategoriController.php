@@ -9,17 +9,17 @@ class KategoriController extends Controller
 {
     public function daftar(Request $req)
     {
-    	$data = Kategori::where('nama_kategori','like',"%{$req->keyword}%")->paginate(10);
+        $data = Kategori::where('nama_kategori','like',"%{$req->keyword}%")->paginate(10);
 
-    	return view('admin.pages.kategori.daftar',['data'=>$data]);
+        return view('admin.pages.kategori.daftar',['data'=>$data]);
     }
 
     public function add()
     {
-    	return view('admin.pages.kategori.add');
+        return view('admin.pages.kategori.add');
     }
 
-  public function save(Request $req)
+    public function save(Request $req)
     {
         \Validator::make($req->all(),[
             'kategori'=>'required|between:3,100|unique:kategori,nama_kategori',
@@ -35,6 +35,7 @@ class KategoriController extends Controller
             return back()->with('result','fail')->withInput();
         }
     }
+
     public function edit($id)
     {
         $data = Kategori::where('id',$id)->first();
@@ -47,6 +48,14 @@ class KategoriController extends Controller
             'kategori'=>'required|between:3,100|unique:kategori,nama_kategori,'.$req->id,
             ])->validate();
 
-        return 'Fungsi Save';
+        $result = Kategori::where('id',$req->id)
+                    ->update([
+                        'nama_kategori'=>$req->kategori,
+                    ]);
+        if ( $result ){
+            return redirect()->route('admin.kategori')->with('result','update');
+        } else {
+            return back()->with('result','fail');
+        }
     }
 }
