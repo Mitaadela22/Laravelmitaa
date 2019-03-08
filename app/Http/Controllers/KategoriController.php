@@ -19,13 +19,13 @@ class KategoriController extends Controller
     	return view('admin.pages.kategori.add');
     }
 
-    public function save(Request $req)
+  public function save(Request $req)
     {
         \Validator::make($req->all(),[
             'kategori'=>'required|between:3,100|unique:kategori,nama_kategori',
             ])->validate();
         
-    	$result = new Kategori;
+        $result = new Kategori;
         $result->nama_kategori = $req->kategori;
 
         if( $result->save() ){
@@ -35,7 +35,6 @@ class KategoriController extends Controller
             return back()->with('result','fail')->withInput();
         }
     }
-
     public function edit($id)
     {
         $data = Kategori::where('id',$id)->first();
@@ -44,6 +43,10 @@ class KategoriController extends Controller
 
     public function update(Request $req)
     {
+        \Validator::make($req->all(),[
+            'kategori'=>'required|between:3,100|unique:kategori,nama_kategori,'.$req->id,
+            ])->validate();
+
         return 'Fungsi Save';
     }
 }
