@@ -13,6 +13,7 @@
 </div>
 @endif
 
+<<<<<<< HEAD
 @if( session('result') == 'delete' )
 <div class="alert alert-success alert-dismissible fade show">
 	<strong>Deleted! </strong> Berhasil dihapus.
@@ -25,6 +26,11 @@
 @if( session('result') == 'fail-delete' )
 <div class="alert alert-danger alert-dismissible fade show">
 	<strong>Failed! </strong> Gagal dihapus.
+=======
+@if( session('result') == 'update' )
+<div class="alert alert-success alert-dismissible fade show">
+	<strong>Saved! </strong> Berhasil diupdate.
+>>>>>>> 9b959376392a5fcffbc9328f9ad2259a7d9d0e61
 	<button type="button" class="close" data-dismiss="alert">
 		&times;
 	</button>

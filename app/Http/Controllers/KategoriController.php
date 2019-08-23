@@ -57,6 +57,7 @@ class KategoriController extends Controller
         } else {
             return back()->with('result','fail');
         }
+<<<<<<< HEAD
     }
 
     public function delete(Request $req)
@@ -67,5 +68,7 @@ class KategoriController extends Controller
         } else {
             return back()->with('result','fail-delete');
         }
+=======
+>>>>>>> 9b959376392a5fcffbc9328f9ad2259a7d9d0e61
     }
 }
